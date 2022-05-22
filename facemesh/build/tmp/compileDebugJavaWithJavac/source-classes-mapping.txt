@@ -1,0 +1,9 @@
+com/google/mediapipe/examples/facemesh/FaceMeshResultImageView.java
+ com.google.mediapipe.examples.facemesh.FaceMeshResultImageView
+com/google/mediapipe/examples/facemesh/BuildConfig.java
+ com.google.mediapipe.examples.facemesh.BuildConfig
+com/google/mediapipe/examples/facemesh/FaceMeshResultGlRenderer.java
+ com.google.mediapipe.examples.facemesh.FaceMeshResultGlRenderer
+com/google/mediapipe/examples/facemesh/MainActivity.java
+ com.google.mediapipe.examples.facemesh.MainActivity
+ com.google.mediapipe.examples.facemesh.MainActivity$InputSource

@@ -1,0 +1,157 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.google.mediapipe.apps.facemesh"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:5:5-7:41
+8        android:minSdkVersion="21"
+8-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:6:9-35
+9        android:targetSdkVersion="31" />
+9-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:7:9-38
+10    <!-- For loading images from gallery -->
+11    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- For using the camera -->
+11-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:9:5-80
+11-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:9:22-77
+12    <uses-permission android:name="android.permission.CAMERA" />
+12-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:10:5-65
+12-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:10:22-62
+13
+14    <uses-feature android:name="android.hardware.camera" /> <!-- For logging solution events -->
+14-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:12:5-60
+14-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:12:19-57
+15    <uses-permission android:name="android.permission.INTERNET" />
+15-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:13:5-67
+15-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:13:22-64
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:14:5-79
+16-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:14:22-76
+17
+18    <application
+18-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:16:5-65:19
+19        android:allowBackup="true"
+19-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:17:9-35
+20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+20-->[androidx.core:core:1.5.0] C:\Users\Benson\.gradle\caches\transforms-3\a1605265a276ccaf05dba118648041ac\transformed\core-1.5.0\AndroidManifest.xml:24:18-86
+21        android:debuggable="true"
+22        android:icon="@mipmap/ic_launcher"
+22-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:18:9-43
+23        android:label="Acupoint Detection"
+23-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:19:9-43
+24        android:roundIcon="@mipmap/ic_launcher_round"
+24-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:20:9-54
+25        android:supportsRtl="true"
+25-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:21:9-35
+26        android:theme="@style/AppTheme" >
+26-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:22:9-40
+27        <activity
+27-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:23:9-25:40
+28            android:name="com.google.mediapipe.examples.facemesh.DiagnosisActivity"
+28-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:24:13-84
+29            android:exported="false" />
+29-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:25:13-37
+30        <activity
+30-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:26:9-29:83
+31            android:name="com.google.mediapipe.examples.facemesh.CameraActivity"
+31-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:27:13-81
+32            android:exported="false"
+32-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:28:13-37
+33            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+33-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:29:13-80
+34        <!--
+35        <activity
+36            android:name=".LearningActivity"
+37            android:exported="false"
+38            android:label="@string/title_activity_learning"
+39            android:theme="@style/AppTheme.NoActionBar" >
+40            <intent-filter>
+41                <action android:name="android.intent.action.MAIN" />
+42                <category android:name="android.intent.category.LAUNCHER" />
+43            </intent-filter>
+44        />
+45        -->
+46        <activity
+46-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:42:9-50:20
+47            android:name="com.google.mediapipe.examples.facemesh.MenuActivity"
+47-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:43:13-79
+48            android:exported="true" >
+48-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:44:13-36
+49            <intent-filter>
+49-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:45:13-49:29
+50                <action android:name="android.intent.action.MAIN" />
+50-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:46:17-69
+50-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:46:25-66
+51
+52                <category android:name="android.intent.category.LAUNCHER" />
+52-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:48:17-77
+52-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:48:27-74
+53            </intent-filter>
+54        </activity>
+55        <activity
+55-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:51:9-53:52
+56            android:name="com.google.mediapipe.examples.facemesh.MainActivity"
+56-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:52:13-79
+57            android:screenOrientation="portrait" />
+57-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:53:13-49
+58        <!--
+59<intent-filter>
+60                <action android:name="android.intent.action.MAIN" />
+61                <category android:name="android.intent.category.LAUNCHER" />
+62            </intent-filter>
+63        -->
+64        <!-- </activity> -->
+65        <activity
+65-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:61:9-64:59
+66            android:name="com.google.mediapipe.examples.facemesh.LearningActivity"
+66-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:62:13-83
+67            android:exported="false"
+67-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:63:13-37
+68            android:theme="@style/AppTheme.NoActionBar" />
+68-->D:\#cource\mediapipe-master\mediapipe\examples\android\solutions\facemesh\src\main\AndroidManifest.xml:64:13-56
+69
+70        <uses-library
+70-->[androidx.window:window:1.0.0] C:\Users\Benson\.gradle\caches\transforms-3\194105470fda0354aaff7bde4c998be5\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+71            android:name="androidx.window.extensions"
+71-->[androidx.window:window:1.0.0] C:\Users\Benson\.gradle\caches\transforms-3\194105470fda0354aaff7bde4c998be5\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+72            android:required="false" />
+72-->[androidx.window:window:1.0.0] C:\Users\Benson\.gradle\caches\transforms-3\194105470fda0354aaff7bde4c998be5\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+73        <uses-library
+73-->[androidx.window:window:1.0.0] C:\Users\Benson\.gradle\caches\transforms-3\194105470fda0354aaff7bde4c998be5\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+74            android:name="androidx.window.sidecar"
+74-->[androidx.window:window:1.0.0] C:\Users\Benson\.gradle\caches\transforms-3\194105470fda0354aaff7bde4c998be5\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+75            android:required="false" />
+75-->[androidx.window:window:1.0.0] C:\Users\Benson\.gradle\caches\transforms-3\194105470fda0354aaff7bde4c998be5\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+76
+77        <service
+77-->[com.google.android.datatransport:transport-backend-cct:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\39a4c3c8287a9833a252bc7a370b863b\transformed\transport-backend-cct-3.1.0\AndroidManifest.xml:29:9-35:19
+78            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+78-->[com.google.android.datatransport:transport-backend-cct:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\39a4c3c8287a9833a252bc7a370b863b\transformed\transport-backend-cct-3.1.0\AndroidManifest.xml:30:13-103
+79            android:exported="false" >
+79-->[com.google.android.datatransport:transport-backend-cct:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\39a4c3c8287a9833a252bc7a370b863b\transformed\transport-backend-cct-3.1.0\AndroidManifest.xml:31:13-37
+80            <meta-data
+80-->[com.google.android.datatransport:transport-backend-cct:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\39a4c3c8287a9833a252bc7a370b863b\transformed\transport-backend-cct-3.1.0\AndroidManifest.xml:32:13-34:39
+81                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+81-->[com.google.android.datatransport:transport-backend-cct:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\39a4c3c8287a9833a252bc7a370b863b\transformed\transport-backend-cct-3.1.0\AndroidManifest.xml:33:17-94
+82                android:value="cct" />
+82-->[com.google.android.datatransport:transport-backend-cct:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\39a4c3c8287a9833a252bc7a370b863b\transformed\transport-backend-cct-3.1.0\AndroidManifest.xml:34:17-36
+83        </service>
+84        <service
+84-->[com.google.android.datatransport:transport-runtime:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\0e7cb0ba34dc691268d1676f662831ac\transformed\transport-runtime-3.1.0\AndroidManifest.xml:26:9-30:19
+85            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+85-->[com.google.android.datatransport:transport-runtime:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\0e7cb0ba34dc691268d1676f662831ac\transformed\transport-runtime-3.1.0\AndroidManifest.xml:27:13-117
+86            android:exported="false"
+86-->[com.google.android.datatransport:transport-runtime:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\0e7cb0ba34dc691268d1676f662831ac\transformed\transport-runtime-3.1.0\AndroidManifest.xml:28:13-37
+87            android:permission="android.permission.BIND_JOB_SERVICE" >
+87-->[com.google.android.datatransport:transport-runtime:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\0e7cb0ba34dc691268d1676f662831ac\transformed\transport-runtime-3.1.0\AndroidManifest.xml:29:13-69
+88        </service>
+89
+90        <receiver
+90-->[com.google.android.datatransport:transport-runtime:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\0e7cb0ba34dc691268d1676f662831ac\transformed\transport-runtime-3.1.0\AndroidManifest.xml:32:9-34:40
+91            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+91-->[com.google.android.datatransport:transport-runtime:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\0e7cb0ba34dc691268d1676f662831ac\transformed\transport-runtime-3.1.0\AndroidManifest.xml:33:13-132
+92            android:exported="false" />
+92-->[com.google.android.datatransport:transport-runtime:3.1.0] C:\Users\Benson\.gradle\caches\transforms-3\0e7cb0ba34dc691268d1676f662831ac\transformed\transport-runtime-3.1.0\AndroidManifest.xml:34:13-37
+93    </application>
+94
+95</manifest>

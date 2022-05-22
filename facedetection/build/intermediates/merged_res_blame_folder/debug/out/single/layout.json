@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\content_main.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\src\\main\\res\\layout\\content_main.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_me.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\src\\main\\res\\layout\\item_chat_me.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_first.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\src\\main\\res\\layout\\fragment_first.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_learning.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\src\\main\\res\\layout\\activity_learning.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\content_learning.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\src\\main\\res\\layout\\content_learning.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_menu.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\src\\main\\res\\layout\\activity_menu.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_second.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\src\\main\\res\\layout\\fragment_second.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_diagnosis.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\src\\main\\res\\layout\\activity_diagnosis.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_other.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\src\\main\\res\\layout\\item_chat_other.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_camera.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facedetection\\src\\main\\res\\layout\\activity_camera.xml"
+    }
+]
