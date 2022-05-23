@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.SearchView;
 
+import com.google.android.material.tabs.TabLayout;
+
 public class MenuActivity extends AppCompatActivity {
 
     @Override

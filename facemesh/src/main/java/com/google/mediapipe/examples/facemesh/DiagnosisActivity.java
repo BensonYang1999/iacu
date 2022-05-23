@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -76,6 +77,10 @@ public class DiagnosisActivity extends AppCompatActivity {
         // Button
         Button btn_send_message = (Button) findViewById(R.id.button_gchat_send);
         btn_send_message.setOnClickListener((v)->{
+            if (text_message.getText().toString().trim().length() == 0){
+                Toast.makeText(this, "No input words", Toast.LENGTH_SHORT).show();
+                return;
+            }
             HashMap<String, String> hashMap = new HashMap<>();
             hashMap.put("user", "me");
             hashMap.put("message", text_message.getText().toString());
@@ -99,7 +104,7 @@ public class DiagnosisActivity extends AppCompatActivity {
                 super(itemView);
                 MyMessage = itemView.findViewById(R.id.text_gchat_message_me);
                 SendTime = itemView.findViewById(R.id.text_gchat_timestamp_me);
-                SendDate = itemView.findViewById(R.id.text_gchat_date_me);
+//                SendDate = itemView.findViewById(R.id.text_gchat_date_me);
             }
         }
 
@@ -117,7 +122,7 @@ public class DiagnosisActivity extends AppCompatActivity {
         public void onBindViewHolder(ViewHolder holder, int position) {
             holder.MyMessage.setText(arrayList.get(position).get("message"));
             holder.SendTime.setText(arrayList.get(position).get("time"));
-            holder.SendDate.setText(arrayList.get(position).get("date"));
+//            holder.SendDate.setText(arrayList.get(position).get("date"));
 //            holder.MyMessage.setText("test message.");
 //            time = df.format(Calendar.getInstance().getTime());
 //            holder.SendTime.setText(time);

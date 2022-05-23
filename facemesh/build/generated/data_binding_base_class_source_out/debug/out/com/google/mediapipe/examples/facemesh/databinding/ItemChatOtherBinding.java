@@ -32,9 +32,6 @@ public final class ItemChatOtherBinding implements ViewBinding {
   public final LinearLayout layoutGchatContainerOther;
 
   @NonNull
-  public final TextView textGchatDateOther;
-
-  @NonNull
   public final TextView textGchatMessageOther;
 
   @NonNull
@@ -45,14 +42,12 @@ public final class ItemChatOtherBinding implements ViewBinding {
 
   private ItemChatOtherBinding(@NonNull ConstraintLayout rootView,
       @NonNull CardView cardGchatMessageOther, @NonNull ImageView imageGchatProfileOther,
-      @NonNull LinearLayout layoutGchatContainerOther, @NonNull TextView textGchatDateOther,
-      @NonNull TextView textGchatMessageOther, @NonNull TextView textGchatTimestampOther,
-      @NonNull TextView textGchatUserOther) {
+      @NonNull LinearLayout layoutGchatContainerOther, @NonNull TextView textGchatMessageOther,
+      @NonNull TextView textGchatTimestampOther, @NonNull TextView textGchatUserOther) {
     this.rootView = rootView;
     this.cardGchatMessageOther = cardGchatMessageOther;
     this.imageGchatProfileOther = imageGchatProfileOther;
     this.layoutGchatContainerOther = layoutGchatContainerOther;
-    this.textGchatDateOther = textGchatDateOther;
     this.textGchatMessageOther = textGchatMessageOther;
     this.textGchatTimestampOther = textGchatTimestampOther;
     this.textGchatUserOther = textGchatUserOther;
@@ -103,12 +98,6 @@ public final class ItemChatOtherBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.text_gchat_date_other;
-      TextView textGchatDateOther = ViewBindings.findChildViewById(rootView, id);
-      if (textGchatDateOther == null) {
-        break missingId;
-      }
-
       id = R.id.text_gchat_message_other;
       TextView textGchatMessageOther = ViewBindings.findChildViewById(rootView, id);
       if (textGchatMessageOther == null) {
@@ -128,8 +117,8 @@ public final class ItemChatOtherBinding implements ViewBinding {
       }
 
       return new ItemChatOtherBinding((ConstraintLayout) rootView, cardGchatMessageOther,
-          imageGchatProfileOther, layoutGchatContainerOther, textGchatDateOther,
-          textGchatMessageOther, textGchatTimestampOther, textGchatUserOther);
+          imageGchatProfileOther, layoutGchatContainerOther, textGchatMessageOther,
+          textGchatTimestampOther, textGchatUserOther);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

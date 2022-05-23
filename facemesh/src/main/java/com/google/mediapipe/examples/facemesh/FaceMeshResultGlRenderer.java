@@ -16,8 +16,12 @@ package com.google.mediapipe.examples.facemesh;
 
 import static com.google.mediapipe.solutions.facemesh.FaceMeshConnections.*;
 
+import android.app.Application;
 import android.opengl.GLES20;
 import android.util.Log;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.mediapipe.formats.proto.LandmarkProto.NormalizedLandmark;
@@ -31,7 +35,7 @@ import java.nio.FloatBuffer;
 import java.util.List;
 
 /** A custom implementation of {@link ResultGlRenderer} to render {@link FaceMeshResult}. */
-public class FaceMeshResultGlRenderer implements ResultGlRenderer<FaceMeshResult> {
+public class FaceMeshResultGlRenderer extends AppCompatActivity implements ResultGlRenderer<FaceMeshResult> {
   private static final String TAG = "FaceMeshResultGlRenderer";
 
   private static final float[] TESSELATION_COLOR = new float[] {0.75f, 0.75f, 0.75f, 0.5f};
@@ -88,6 +92,9 @@ public class FaceMeshResultGlRenderer implements ResultGlRenderer<FaceMeshResult
     colorHandle = GLES20.glGetUniformLocation(program, "uColor");
   }
 
+  GlobalVariable gv = GlobalVariable.getInstance();
+  String acupoint = gv.getAcupoint();
+
   @Override
   public void renderResult(FaceMeshResult result, float[] projectionMatrix) {
     if (result == null) {
@@ -95,6 +102,8 @@ public class FaceMeshResultGlRenderer implements ResultGlRenderer<FaceMeshResult
     }
     GLES20.glUseProgram(program);
     GLES20.glUniformMatrix4fv(projectionMatrixHandle, 1, false, projectionMatrix, 0);
+
+    Log.i("acupoint", acupoint);
 
     int numFaces = result.multiFaceLandmarks().size();
     for (int i = 0; i < numFaces; ++i) {

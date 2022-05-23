@@ -12,6 +12,10 @@
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\src\\main\\res\\layout\\activity_camera.xml"
     },
     {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_acupoint.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\src\\main\\res\\layout\\fragment_acupoint.xml"
+    },
+    {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_diagnosis.xml",
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\src\\main\\res\\layout\\activity_diagnosis.xml"
     },

@@ -4,14 +4,15 @@ package com.google.mediapipe.examples.facemesh.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 import com.google.mediapipe.examples.facemesh.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -25,17 +26,22 @@ public final class ActivityLearningBinding implements ViewBinding {
   public final FloatingActionButton fab;
 
   @NonNull
-  public final ListView listview;
+  public final TabLayout tabs;
 
   @NonNull
   public final Toolbar toolbar;
 
+  @NonNull
+  public final ViewPager2 viewpager;
+
   private ActivityLearningBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull FloatingActionButton fab, @NonNull ListView listview, @NonNull Toolbar toolbar) {
+      @NonNull FloatingActionButton fab, @NonNull TabLayout tabs, @NonNull Toolbar toolbar,
+      @NonNull ViewPager2 viewpager) {
     this.rootView = rootView;
     this.fab = fab;
-    this.listview = listview;
+    this.tabs = tabs;
     this.toolbar = toolbar;
+    this.viewpager = viewpager;
   }
 
   @Override
@@ -71,9 +77,9 @@ public final class ActivityLearningBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.listview;
-      ListView listview = ViewBindings.findChildViewById(rootView, id);
-      if (listview == null) {
+      id = R.id.tabs;
+      TabLayout tabs = ViewBindings.findChildViewById(rootView, id);
+      if (tabs == null) {
         break missingId;
       }
 
@@ -83,7 +89,14 @@ public final class ActivityLearningBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityLearningBinding((CoordinatorLayout) rootView, fab, listview, toolbar);
+      id = R.id.viewpager;
+      ViewPager2 viewpager = ViewBindings.findChildViewById(rootView, id);
+      if (viewpager == null) {
+        break missingId;
+      }
+
+      return new ActivityLearningBinding((CoordinatorLayout) rootView, fab, tabs, toolbar,
+          viewpager);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

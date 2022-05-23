@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
@@ -17,12 +18,25 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.mediapipe.examples.facemesh.databinding.ActivityLearningBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LearningActivity extends AppCompatActivity {
 
@@ -30,10 +44,10 @@ public class LearningActivity extends AppCompatActivity {
     private ActivityLearningBinding binding;
 
 
-    ListView listView;
-    String[] name = {"絲竹空","印堂/曲眉", "魚腰", "球後", "上迎香", "夾承漿", "睛明", "攢竹", "瞳子膠/目髎", "陽白", "承泣", "四白", "巨膠", "地倉", "顴髎", "水溝", "禾髎", "迎香", "承漿", "孔最", "內觀", "梁秋", "銀門", "光明"};
+//    ListView listView;
+//    String[] name = {"絲竹空","印堂/曲眉", "魚腰", "球後", "上迎香", "夾承漿", "睛明", "攢竹", "瞳子膠/目髎", "陽白", "承泣", "四白", "巨膠", "地倉", "顴髎", "水溝", "禾髎", "迎香", "承漿", "孔最", "內觀", "梁秋", "銀門", "光明"};
 
-    ArrayAdapter<String> arrayAdapter;
+//    ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +59,9 @@ public class LearningActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
 //        setContentView(R.layout.activity_learning);
 
-        listView = findViewById(R.id.listview);
-        arrayAdapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, name);
-        listView.setAdapter(arrayAdapter);
+//        listView = findViewById(R.id.listview);
+//        arrayAdapter = new ArrayAdapter<String>( this, android.R.layout.simple_list_item_1, name);
+//        listView.setAdapter(arrayAdapter);
 
 //        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_learning);
 //        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
@@ -56,8 +70,8 @@ public class LearningActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+                GlobalVariable gv = GlobalVariable.getInstance();
+                gv.setAcupoint("test");
                 Intent intent = new Intent();
                 intent.setClass(LearningActivity.this, CameraActivity.class);
                 startActivity(intent);
@@ -66,6 +80,22 @@ public class LearningActivity extends AppCompatActivity {
 
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
+
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        ViewPager2 viewPager = findViewById(R.id.viewpager);
+
+        String title[] = {"依穴道", "依症狀"};
+        int pos = 0;
+
+        AcupointAdapter adapter = new AcupointAdapter(getSupportFragmentManager(), getLifecycle());
+        adapter.addFragment(new AcupointFragment(), title[pos]);
+//        viewPager.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
+        viewPager.setAdapter(adapter);
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(title[position])).attach();
+
+
+//        tabLayout.addTab(tabLayout.newTab().setText("依穴道"));
+//        tabLayout.addTab(tabLayout.newTab().setText("依症狀"));
 
     }
 
@@ -77,30 +107,30 @@ public class LearningActivity extends AppCompatActivity {
 //                || super.onSupportNavigateUp();
 //    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu, menu);
-
-        MenuItem menuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setQueryHint("Type here to search");
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-
-                arrayAdapter.getFilter().filter(s);
-                return false;
-            }
-        });
-
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//
+//        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.menu, menu);
+//
+//        MenuItem menuItem = menu.findItem(R.id.action_search);
+//        SearchView searchView = (SearchView) menuItem.getActionView();
+//        searchView.setQueryHint("Type here to search");
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String s) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//
+//                arrayAdapter.getFilter().filter(s);
+//                return false;
+//            }
+//        });
+//
+//        return super.onCreateOptionsMenu(menu);
+//    }
 }
