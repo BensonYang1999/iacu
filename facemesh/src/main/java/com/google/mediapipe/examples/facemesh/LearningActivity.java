@@ -71,7 +71,7 @@ public class LearningActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 GlobalVariable gv = GlobalVariable.getInstance();
-                gv.setAcupoint("test");
+                gv.setAcupoint("All");
                 Intent intent = new Intent();
                 intent.setClass(LearningActivity.this, CameraActivity.class);
                 startActivity(intent);

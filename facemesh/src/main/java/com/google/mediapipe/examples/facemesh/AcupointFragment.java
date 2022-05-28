@@ -1,5 +1,6 @@
 package com.google.mediapipe.examples.facemesh;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,7 @@ public class AcupointFragment extends Fragment {
     private SearchView searchView = null;
     private SearchView.OnQueryTextListener queryTextListener;
     ArrayAdapter<String> arrayAdapter;
+    GlobalVariable gv = GlobalVariable.getInstance();
 
 //    // TODO: Rename parameter arguments, choose names that match
 //    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -72,7 +74,10 @@ public class AcupointFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getActivity(), name[i], Toast.LENGTH_SHORT).show();
-//                Log.d("Click item",name[i]);
+                gv.setAcupoint(name[i]);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), CameraActivity.class);
+                startActivity(intent);
             }
         });
         return rootView;
