@@ -20,11 +20,11 @@ public final class FragmentAcupointBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final ListView listview;
+  public final ListView listviewAcu;
 
-  private FragmentAcupointBinding(@NonNull FrameLayout rootView, @NonNull ListView listview) {
+  private FragmentAcupointBinding(@NonNull FrameLayout rootView, @NonNull ListView listviewAcu) {
     this.rootView = rootView;
-    this.listview = listview;
+    this.listviewAcu = listviewAcu;
   }
 
   @Override
@@ -54,13 +54,13 @@ public final class FragmentAcupointBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.listview;
-      ListView listview = ViewBindings.findChildViewById(rootView, id);
-      if (listview == null) {
+      id = R.id.listview_acu;
+      ListView listviewAcu = ViewBindings.findChildViewById(rootView, id);
+      if (listviewAcu == null) {
         break missingId;
       }
 
-      return new FragmentAcupointBinding((FrameLayout) rootView, listview);
+      return new FragmentAcupointBinding((FrameLayout) rootView, listviewAcu);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

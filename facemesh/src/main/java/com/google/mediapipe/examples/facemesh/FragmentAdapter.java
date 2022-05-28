@@ -1,5 +1,7 @@
 package com.google.mediapipe.examples.facemesh;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -9,18 +11,25 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AcupointAdapter extends FragmentStateAdapter {
+public class FragmentAdapter extends FragmentStateAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    public AcupointAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+    public FragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
     }
-
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
+//        Log.i("createFragment", String.valueOf(position));
+        switch (position){
+            case 0 :
+                return new AcupointFragment();
+            case 1 :
+                return new SymptomFragment();
+        }
+
         return new AcupointFragment();
     }
 
@@ -28,7 +37,6 @@ public class AcupointAdapter extends FragmentStateAdapter {
     public int getItemCount() {
         return mFragmentTitleList.size();
     }
-
     public void addFragment(Fragment fragment, String title) {
         mFragmentList.add(fragment);
         mFragmentTitleList.add(title);

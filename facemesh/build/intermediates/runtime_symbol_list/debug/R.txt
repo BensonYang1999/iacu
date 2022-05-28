@@ -2014,7 +2014,8 @@ int id line3 0x7f0800dd
 int id linear 0x7f0800de
 int id listMode 0x7f0800df
 int id list_item 0x7f0800e0
-int id listview 0x7f0800e1
+int id listview_acu 0x7f0801d6
+int id listview_sym 0x7f0801d7
 int id locale 0x7f0800e2
 int id ltr 0x7f0800e3
 int id masked 0x7f0800e4
@@ -2346,6 +2347,7 @@ int layout design_navigation_menu_item 0x7f0b002f
 int layout design_text_input_end_icon 0x7f0b0030
 int layout design_text_input_start_icon 0x7f0b0031
 int layout fragment_acupoint 0x7f0b0078
+int layout fragment_symptom 0x7f0b0082
 int layout item_chat_me 0x7f0b0032
 int layout item_chat_other 0x7f0b0033
 int layout material_chip_input_combo 0x7f0b0034

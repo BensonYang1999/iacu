@@ -2015,7 +2015,8 @@ id line3
 id linear
 id listMode
 id list_item
-id listview
+id listview_acu
+id listview_sym
 id locale
 id ltr
 id masked
@@ -2347,6 +2348,7 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_acupoint
+layout fragment_symptom
 layout item_chat_me
 layout item_chat_other
 layout material_chip_input_combo

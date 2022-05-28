@@ -65,7 +65,7 @@ public class AcupointFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_acupoint, container, false);
-        ListView listView = rootView.findViewById(R.id.listview);
+        ListView listView = rootView.findViewById(R.id.listview_acu);
         arrayAdapter = new ArrayAdapter<String>( getActivity(), android.R.layout.simple_list_item_1, name);
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){

@@ -12,12 +12,12 @@
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
-    },
-    {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\merged_res\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\merged_res\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
@@ -66,6 +66,10 @@
     {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\merged_res\\debug\\layout_fragment_acupoint.xml.flat",
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\src\\main\\res\\layout\\fragment_acupoint.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\merged_res\\debug\\layout_fragment_symptom.xml.flat",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\src\\main\\res\\layout\\fragment_symptom.xml"
     },
     {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\merged_res\\debug\\drawable_ic_launcher_background.xml.flat",

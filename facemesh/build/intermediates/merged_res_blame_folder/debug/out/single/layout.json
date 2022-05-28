@@ -24,6 +24,10 @@
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\src\\main\\res\\layout\\activity_learning.xml"
     },
     {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_symptom.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\src\\main\\res\\layout\\fragment_symptom.xml"
+    },
+    {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_other.xml",
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\src\\main\\res\\layout\\item_chat_other.xml"
     },

@@ -4,8 +4,17 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/mediapipe-solutions-examples.iml" filepath="$PROJECT_DIR$/.idea/modules/mediapipe-solutions-examples.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/facedetection/mediapipe-solutions-examples.facedetection.iml" filepath="$PROJECT_DIR$/.idea/modules/facedetection/mediapipe-solutions-examples.facedetection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/facedetection/mediapipe-solutions-examples.facedetection.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/facedetection/mediapipe-solutions-examples.facedetection.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/facedetection/mediapipe-solutions-examples.facedetection.main.iml" filepath="$PROJECT_DIR$/.idea/modules/facedetection/mediapipe-solutions-examples.facedetection.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/facedetection/mediapipe-solutions-examples.facedetection.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/facedetection/mediapipe-solutions-examples.facedetection.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/facemesh/mediapipe-solutions-examples.facemesh.iml" filepath="$PROJECT_DIR$/.idea/modules/facemesh/mediapipe-solutions-examples.facemesh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/facemesh/mediapipe-solutions-examples.facemesh.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/facemesh/mediapipe-solutions-examples.facemesh.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/facemesh/mediapipe-solutions-examples.facemesh.main.iml" filepath="$PROJECT_DIR$/.idea/modules/facemesh/mediapipe-solutions-examples.facemesh.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/facemesh/mediapipe-solutions-examples.facemesh.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/facemesh/mediapipe-solutions-examples.facemesh.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/hands/mediapipe-solutions-examples.hands.iml" filepath="$PROJECT_DIR$/.idea/modules/hands/mediapipe-solutions-examples.hands.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hands/mediapipe-solutions-examples.hands.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/hands/mediapipe-solutions-examples.hands.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hands/mediapipe-solutions-examples.hands.main.iml" filepath="$PROJECT_DIR$/.idea/modules/hands/mediapipe-solutions-examples.hands.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hands/mediapipe-solutions-examples.hands.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/hands/mediapipe-solutions-examples.hands.unitTest.iml" />
     </modules>
   </component>
 </project>

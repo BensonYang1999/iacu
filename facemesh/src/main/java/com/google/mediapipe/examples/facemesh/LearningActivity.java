@@ -87,12 +87,23 @@ public class LearningActivity extends AppCompatActivity {
         String title[] = {"依穴道", "依症狀"};
         int pos = 0;
 
-        AcupointAdapter adapter = new AcupointAdapter(getSupportFragmentManager(), getLifecycle());
-        adapter.addFragment(new AcupointFragment(), title[pos]);
-//        viewPager.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
-        viewPager.setAdapter(adapter);
+        FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), getLifecycle());
+        fragmentAdapter.addFragment(new AcupointFragment(), title[0]);
+        fragmentAdapter.addFragment(new SymptomFragment(), title[1]);
+        viewPager.setAdapter(fragmentAdapter);
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(title[position])).attach();
 
+//        AcupointAdapter adapter_acu = new AcupointAdapter(getSupportFragmentManager(), getLifecycle());
+//        adapter_acu.addFragment(new AcupointFragment(), title[0]);
+//        adapter_acu.addFragment(new SymptomFragment(), title[1]);
+//        viewPager.setAdapter(adapter_acu);
+//        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(title[position])).attach();
+
+
+//        SymptomAdapter adapter_sym = new SymptomAdapter(getSupportFragmentManager(), getLifecycle());
+//        adapter_sym.addFragment(new SymptomFragment(), title[1]);
+//        viewPager.setAdapter(adapter_sym);
+//        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> tab.setText(title[position])).attach();
 
 //        tabLayout.addTab(tabLayout.newTab().setText("依穴道"));
 //        tabLayout.addTab(tabLayout.newTab().setText("依症狀"));
