@@ -112,7 +112,7 @@ public class FaceMeshResultGlRenderer extends AppCompatActivity implements Resul
           FACEMESH_TESSELATION,
           TESSELATION_COLOR,
           TESSELATION_THICKNESS);
-      drawLandmarks(
+      /*drawLandmarks(
           result.multiFaceLandmarks().get(i).getLandmarkList(),
           FACEMESH_RIGHT_EYE,
           RIGHT_EYE_COLOR,

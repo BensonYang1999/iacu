@@ -3,8 +3,8 @@
     package="com.google.mediapipe.examples.facemesh">
 
     <uses-sdk
-        android:minSdkVersion="21"
-        android:targetSdkVersion="31" />
+        android:minSdkVersion="23"
+        android:targetSdkVersion="32" />
     <!-- For loading images from gallery -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- For using the camera -->
     <uses-permission android:name="android.permission.CAMERA" />
@@ -20,7 +20,8 @@
         android:label="Acupoint Detection"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity
             android:name="com.google.mediapipe.examples.facemesh.DiagnosisActivity"
             android:exported="false" />

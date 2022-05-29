@@ -4,7 +4,7 @@
             "outputFile": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Benson\\.gradle\\caches\\transforms-3\\ab18bb133676abbc8e5658ed8aa24dd4\\transformed\\material-1.4.0-beta01\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
+                    "source": "C:\\Users\\Benson\\.gradle\\caches\\transforms-3\\a911bf5df232e3fd12bbd44240a4fea2\\transformed\\material-1.6.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

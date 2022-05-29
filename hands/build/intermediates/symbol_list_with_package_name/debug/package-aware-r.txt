@@ -2007,7 +2007,8 @@ id line3
 id linear
 id listMode
 id list_item
-id listview
+id listview_acu
+id listview_sym
 id locale
 id ltr
 id masked
@@ -2170,6 +2171,7 @@ id stretch
 id submenuarrow
 id submit_area
 id tabMode
+id tabs
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -2195,8 +2197,6 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textView
-id text_gchat_date_me
-id text_gchat_date_other
 id text_gchat_indicator
 id text_gchat_message_me
 id text_gchat_message_other
@@ -2239,6 +2239,7 @@ id view_offset_helper
 id view_tree_lifecycle_owner
 id view_tree_saved_state_registry_owner
 id view_tree_view_model_store_owner
+id viewpager
 id visible
 id visible_removing_fragment_view_tag
 id withText
@@ -2336,6 +2337,8 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fragment_acupoint
+layout fragment_symptom
 layout item_chat_me
 layout item_chat_other
 layout material_chip_input_combo
@@ -2452,6 +2455,7 @@ string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string first_fragment_label
+string hello_blank_fragment
 string hello_first_fragment
 string hello_second_fragment
 string hide_bottom_view_on_scroll_behavior

@@ -4,7 +4,7 @@
             "outputFile": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\facemesh\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Benson\\.gradle\\caches\\transforms-3\\b7cdc5c1453a7e1579f6238be628b37b\\transformed\\appcompat-1.3.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "source": "C:\\Users\\Benson\\.gradle\\caches\\transforms-3\\914116008979e77bc79da871871e9f31\\transformed\\appcompat-1.4.1\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

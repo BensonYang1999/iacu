@@ -1,9 +1,5 @@
 [
     {
-        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_other.xml",
-        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\item_chat_other.xml"
-    },
-    {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_second.xml",
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\fragment_second.xml"
     },
@@ -14,6 +10,14 @@
     {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\content_learning.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\content_learning.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_chat_other.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\item_chat_other.xml"
     },
     {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_diagnosis.xml",
@@ -36,8 +40,12 @@
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\activity_camera.xml"
     },
     {
-        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\content_learning.xml",
-        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\content_learning.xml"
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_symptom.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\fragment_symptom.xml"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_acupoint.xml",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\fragment_acupoint.xml"
     },
     {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_first.xml",

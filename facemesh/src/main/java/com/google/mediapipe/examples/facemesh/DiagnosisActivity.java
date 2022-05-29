@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +19,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,18 +32,32 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
+import java.util.UUID;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 
 public class DiagnosisActivity extends AppCompatActivity {
 
+//    String uniqueID = UUID.randomUUID().toString();
+    String uniqueID = "123456789";
+
     RecyclerView mRecyclerView;
-    CustomAdapter myListAdapter;
+//    CustomAdapter myListAdapter;
+    MessageListAdapter mMessageAdapter;
     ArrayList<HashMap<String,String>> arrayList = new ArrayList<>();
     EditText text_message;
     DateFormat df_time = new SimpleDateFormat("h:mm a");
     DateFormat df_date = new SimpleDateFormat("MMM d", Locale.ENGLISH);
     String time, date;
+
+    private OkHttpClient okHttpClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,37 +65,81 @@ public class DiagnosisActivity extends AppCompatActivity {
         setContentView(R.layout.activity_diagnosis);
 
         //製造資料
-        for (int i = 0;i<0;i++){
+        /*for (int i = 0;i<1;i++){
             HashMap<String, String> hashMap = new HashMap<>();
-            hashMap.put("user", "me");
-            hashMap.put("message", "first message");
+            hashMap.put("user", "server");
+            hashMap.put("message", "醫生端測試訊息");
             time = df_time.format(Calendar.getInstance().getTime());
             hashMap.put("time", time);
             arrayList.add(hashMap);
-        }
-
-        /*for (int i = 0;i<30;i++){
-            HashMap<String,String> hashMap = new HashMap<>();
-            hashMap.put("Id","座號："+String.format("%02d",i+1));
-            hashMap.put("Sub1",String.valueOf(new Random().nextInt(80) + 20));
-            hashMap.put("Sub2",String.valueOf(new Random().nextInt(80) + 20));
-            hashMap.put("Avg",String.valueOf(
-                    (Integer.parseInt(hashMap.get("Sub1"))
-                            +Integer.parseInt(hashMap.get("Sub2")))/2));
-
-            arrayList.add(hashMap);
         }*/
 
+        // initial recycler view adapter
         mRecyclerView = findViewById(R.id.recycler_gchat);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, 0));
-        myListAdapter = new CustomAdapter();
-        mRecyclerView.setAdapter(myListAdapter);
+
+//        myListAdapter = new CustomAdapter();
+//        mRecyclerView.setAdapter(myListAdapter);
+
+        mMessageAdapter = new MessageListAdapter(arrayList);
+        mRecyclerView.setAdapter(mMessageAdapter);
+
+
+        // send initial message to server
+        okHttpClient = new OkHttpClient();
+        RequestBody formbody_init
+                = new FormBody.Builder()
+                .add("uid", uniqueID)
+                .add("user_name", "貴賓")
+                .build();
+        Request request_init = new Request.Builder().url("http://benson.myftp.org:3001/init/")
+                .post(formbody_init)
+                .build();
+        okHttpClient.newCall(request_init).enqueue(new Callback() {
+            @Override
+            public void onFailure(
+                    @NotNull Call call,
+                    @NotNull IOException e) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "server down", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Log.i("response", response.toString());
+                            String jsonData = response.body().string();
+                            JSONObject object = new JSONObject(jsonData);
+                            String uid = object.getString("UID");
+                            String question = object.getString("question");
+
+                            HashMap<String, String> hashMap = new HashMap<>();
+                            hashMap.put("user", "server");
+                            hashMap.put("message", question);
+                            time = df_time.format(Calendar.getInstance().getTime());
+                            hashMap.put("time", time);
+                            arrayList.add(hashMap);
+                            mMessageAdapter.notifyItemChanged(arrayList.size());
+
+                        } catch (IOException | JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+
+        });
+
+        // send message button
         text_message = findViewById(R.id.edit_gchat_message);
-
-
-        // Button
         Button btn_send_message = (Button) findViewById(R.id.button_gchat_send);
         btn_send_message.setOnClickListener((v)->{
             if (text_message.getText().toString().trim().length() == 0){
@@ -91,12 +156,115 @@ public class DiagnosisActivity extends AppCompatActivity {
 
             arrayList.add(hashMap);
 
-            text_message.setText("");
-            myListAdapter.notifyDataSetChanged();
-        });
-    }
 
-    private class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
+//            mMessageAdapter.notifyDataSetChanged();
+            mMessageAdapter.notifyItemChanged(arrayList.size());
+
+            okHttpClient = new OkHttpClient();
+            RequestBody formbody
+                    = new FormBody.Builder()
+                    .add("UID", uniqueID)
+                    .add("answer", text_message.getText().toString())
+                    .build();
+            Request request = new Request.Builder().url("http://benson.myftp.org:3001/ask/")
+                    .post(formbody)
+                    .build();
+            okHttpClient.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(
+                        @NotNull Call call,
+                        @NotNull IOException e) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "server down", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                String jsonData = response.body().string();
+                                JSONObject object = new JSONObject(jsonData);
+                                String uid = object.getString("uid");
+                                String question = object.getString("response");
+
+                                HashMap<String, String> hashMap = new HashMap<>();
+                                hashMap.put("user", "server");
+                                hashMap.put("message", question);
+                                time = df_time.format(Calendar.getInstance().getTime());
+                                hashMap.put("time", time);
+                                arrayList.add(hashMap);
+                                mMessageAdapter.notifyItemChanged(arrayList.size());
+
+                            } catch (IOException | JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+
+            });
+
+            text_message.setText("");
+
+            /*RequestBody formbody
+                    = new FormBody.Builder()
+                    .add("uid", uniqueID)
+                    .add("user_name", "貴賓")
+                    .build();
+            Request request = new Request.Builder().url("http://192.168.1.2:3001/init/")
+                    .post(formbody)
+                    .build();
+            okHttpClient.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(
+                        @NotNull Call call,
+                        @NotNull IOException e) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(), "server down", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                String jsonData = response.body().string();
+                                JSONObject object = new JSONObject(jsonData);
+                                String uid = object.getString("UID");
+                                String question = object.getString("response");
+
+                                HashMap<String, String> hashMap = new HashMap<>();
+                                hashMap.put("user", "server");
+                                hashMap.put("message", question);
+                                time = df_time.format(Calendar.getInstance().getTime());
+                                hashMap.put("time", time);
+                                arrayList.add(hashMap);
+                                mMessageAdapter.notifyItemChanged(arrayList.size());
+
+                            } catch (IOException | JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+
+            });*/
+        });
+
+
+    }
+    /*private class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
         class ViewHolder extends RecyclerView.ViewHolder{
             private TextView MyMessage, SendTime, SendDate;
@@ -137,7 +305,7 @@ public class DiagnosisActivity extends AppCompatActivity {
             //return localDataSet.length;
             return arrayList.size();
         }
-    }
+    }*/
 
 
 }

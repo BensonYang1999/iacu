@@ -24,6 +24,10 @@
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\item_chat_other.xml"
     },
     {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\merged_res\\debug\\layout_fragment_symptom.xml.flat",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\fragment_symptom.xml"
+    },
+    {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\merged_res\\debug\\layout_activity_diagnosis.xml.flat",
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\activity_diagnosis.xml"
     },
@@ -46,6 +50,10 @@
     {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\merged_res\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
         "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\merged_res\\debug\\layout_fragment_acupoint.xml.flat",
+        "source": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\src\\main\\res\\layout\\fragment_acupoint.xml"
     },
     {
         "merged": "D:\\#cource\\mediapipe-master\\mediapipe\\examples\\android\\solutions\\hands\\build\\intermediates\\merged_res\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",

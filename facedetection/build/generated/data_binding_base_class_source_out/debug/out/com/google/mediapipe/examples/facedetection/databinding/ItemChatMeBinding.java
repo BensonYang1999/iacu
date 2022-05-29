@@ -28,9 +28,6 @@ public final class ItemChatMeBinding implements ViewBinding {
   public final LinearLayout layoutGchatContainerMe;
 
   @NonNull
-  public final TextView textGchatDateMe;
-
-  @NonNull
   public final TextView textGchatMessageMe;
 
   @NonNull
@@ -38,12 +35,10 @@ public final class ItemChatMeBinding implements ViewBinding {
 
   private ItemChatMeBinding(@NonNull ConstraintLayout rootView,
       @NonNull CardView cardGchatMessageMe, @NonNull LinearLayout layoutGchatContainerMe,
-      @NonNull TextView textGchatDateMe, @NonNull TextView textGchatMessageMe,
-      @NonNull TextView textGchatTimestampMe) {
+      @NonNull TextView textGchatMessageMe, @NonNull TextView textGchatTimestampMe) {
     this.rootView = rootView;
     this.cardGchatMessageMe = cardGchatMessageMe;
     this.layoutGchatContainerMe = layoutGchatContainerMe;
-    this.textGchatDateMe = textGchatDateMe;
     this.textGchatMessageMe = textGchatMessageMe;
     this.textGchatTimestampMe = textGchatTimestampMe;
   }
@@ -87,12 +82,6 @@ public final class ItemChatMeBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.text_gchat_date_me;
-      TextView textGchatDateMe = ViewBindings.findChildViewById(rootView, id);
-      if (textGchatDateMe == null) {
-        break missingId;
-      }
-
       id = R.id.text_gchat_message_me;
       TextView textGchatMessageMe = ViewBindings.findChildViewById(rootView, id);
       if (textGchatMessageMe == null) {
@@ -106,7 +95,7 @@ public final class ItemChatMeBinding implements ViewBinding {
       }
 
       return new ItemChatMeBinding((ConstraintLayout) rootView, cardGchatMessageMe,
-          layoutGchatContainerMe, textGchatDateMe, textGchatMessageMe, textGchatTimestampMe);
+          layoutGchatContainerMe, textGchatMessageMe, textGchatTimestampMe);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
