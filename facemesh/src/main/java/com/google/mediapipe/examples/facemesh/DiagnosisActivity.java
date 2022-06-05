@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.Settings;
@@ -212,6 +213,11 @@ public class DiagnosisActivity extends AppCompatActivity {
                                 Log.i("Continue", cont);
                                 if (cont.equals("false")) {
                                     Toast.makeText(getApplicationContext(), acu_list.get(0), Toast.LENGTH_SHORT).show();
+                                    GlobalVariable gv = GlobalVariable.getInstance();
+                                    gv.setAcupoint(acu_list.get(0));
+                                    Intent intent = new Intent();
+                                    intent.setClass(DiagnosisActivity.this, CameraActivity.class);
+                                    startActivity(intent);
                                 }
 
                             } catch (IOException | JSONException e) {
