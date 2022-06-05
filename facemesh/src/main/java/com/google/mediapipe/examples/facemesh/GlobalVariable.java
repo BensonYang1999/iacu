@@ -4,7 +4,7 @@ import android.app.Application;
 
 public class GlobalVariable extends Application{
     private static GlobalVariable mInstance = null;
-    private String Acupoint = "full";
+    private String Acupoint[] = {"test"};
 
     public static GlobalVariable getInstance(){
         if (mInstance == null){
@@ -17,11 +17,11 @@ public class GlobalVariable extends Application{
         return mInstance;
     }
 
-    public void setAcupoint(String acupoint){
+    public void setAcupoint(String[] acupoint){
         this.Acupoint = acupoint;
     }
 
-    public String getAcupoint(){
+    public String[] getAcupoint(){
         return Acupoint;
     }
 }

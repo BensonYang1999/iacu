@@ -19,50 +19,19 @@ import android.widget.SearchView;
 import android.widget.Toast;
 
 public class AcupointFragment extends Fragment {
-
-    private SearchView searchView = null;
-    private SearchView.OnQueryTextListener queryTextListener;
     ArrayAdapter<String> arrayAdapter;
     GlobalVariable gv = GlobalVariable.getInstance();
 
-//    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
-//
     public AcupointFragment() {
         // Required empty public constructor
     }
-//
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment AcupointFragment.
-//     */
-//    // TODO: Rename and change types and number of parameters
-//    public static AcupointFragment newInstance(String param1, String param2) {
-//        AcupointFragment fragment = new AcupointFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-//
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
 
-    String[] name = {"絲竹空","印堂/曲眉", "魚腰", "球後", "上迎香", "夾承漿", "睛明", "攢竹", "瞳子膠/目髎", "陽白", "承泣", "四白", "巨膠", "地倉", "顴髎", "水溝", "禾髎", "迎香", "承漿", "孔最", "內觀", "梁秋", "銀門", "光明"};
+    String[] name = {"絲竹空","印堂", "魚腰", "球後", "上迎香", "俠承漿", "睛明", "攢竹", "瞳子髎", "陽白", "承泣", "四白", "巨髎", "地倉", "顴髎", "水溝", "禾髎", "迎香", "承漿", "太陽", "孔最", "內觀", "梁秋", "銀門", "光明"};
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,7 +43,7 @@ public class AcupointFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getActivity(), name[i], Toast.LENGTH_SHORT).show();
-                gv.setAcupoint(name[i]);
+                gv.setAcupoint(new String[]{name[i]});
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), CameraActivity.class);
                 startActivity(intent);
