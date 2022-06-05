@@ -1,9 +1,0 @@
-com/google/mediapipe/examples/facedetection/MainActivity.java
- com.google.mediapipe.examples.facedetection.MainActivity
- com.google.mediapipe.examples.facedetection.MainActivity$InputSource
-com/google/mediapipe/examples/facedetection/BuildConfig.java
- com.google.mediapipe.examples.facedetection.BuildConfig
-com/google/mediapipe/examples/facedetection/FaceDetectionResultImageView.java
- com.google.mediapipe.examples.facedetection.FaceDetectionResultImageView
-com/google/mediapipe/examples/facedetection/FaceDetectionResultGlRenderer.java
- com.google.mediapipe.examples.facedetection.FaceDetectionResultGlRenderer
