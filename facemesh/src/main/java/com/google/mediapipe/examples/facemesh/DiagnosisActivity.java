@@ -30,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 import java.util.UUID;
@@ -45,8 +46,8 @@ import okhttp3.Response;
 
 public class DiagnosisActivity extends AppCompatActivity {
 
-//    String uniqueID = UUID.randomUUID().toString();
-    String uniqueID = "123456789";
+    String uniqueID = UUID.randomUUID().toString();
+//    String uniqueID = "123456789";
 
     RecyclerView mRecyclerView;
 //    CustomAdapter myListAdapter;
@@ -118,7 +119,7 @@ public class DiagnosisActivity extends AppCompatActivity {
                             Log.i("response", response.toString());
                             String jsonData = response.body().string();
                             JSONObject object = new JSONObject(jsonData);
-                            String uid = object.getString("UID");
+                            String uid = object.getString("uid");
                             String question = object.getString("question");
 
                             HashMap<String, String> hashMap = new HashMap<>();
@@ -163,7 +164,7 @@ public class DiagnosisActivity extends AppCompatActivity {
             okHttpClient = new OkHttpClient();
             RequestBody formbody
                     = new FormBody.Builder()
-                    .add("UID", uniqueID)
+                    .add("uid", uniqueID)
                     .add("answer", text_message.getText().toString())
                     .build();
             Request request = new Request.Builder().url("http://benson.myftp.org:3001/ask/")
@@ -191,15 +192,27 @@ public class DiagnosisActivity extends AppCompatActivity {
                                 String jsonData = response.body().string();
                                 JSONObject object = new JSONObject(jsonData);
                                 String uid = object.getString("uid");
-                                String question = object.getString("response");
+                                String response_json = object.getString("response");
 
                                 HashMap<String, String> hashMap = new HashMap<>();
                                 hashMap.put("user", "server");
-                                hashMap.put("message", question);
+                                hashMap.put("message", response_json);
                                 time = df_time.format(Calendar.getInstance().getTime());
                                 hashMap.put("time", time);
                                 arrayList.add(hashMap);
                                 mMessageAdapter.notifyItemChanged(arrayList.size());
+
+                                JSONArray acu_json = object.getJSONArray("acu_points");
+                                List<String> acu_list = new ArrayList<>();
+                                for (int i=0; i<acu_json.length(); i++) {
+                                    acu_list.add(acu_json.getString(i));
+                                }
+                                Log.i("List size", String.valueOf(acu_list.size()));
+                                String cont = object.getString("continue");
+                                Log.i("Continue", cont);
+                                if (cont.equals("false")) {
+                                    Toast.makeText(getApplicationContext(), acu_list.get(0), Toast.LENGTH_SHORT).show();
+                                }
 
                             } catch (IOException | JSONException e) {
                                 e.printStackTrace();
