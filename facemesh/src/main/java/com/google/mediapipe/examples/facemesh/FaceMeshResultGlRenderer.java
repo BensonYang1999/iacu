@@ -374,6 +374,7 @@ public class FaceMeshResultGlRenderer extends AppCompatActivity implements Resul
                     164,
                     TEST_COLOR,
                     TEST_THICKNESS);
+            break;
           case "禾髎":
             drawPoint(
                     result.multiFaceLandmarks().get(i).getLandmarkList(),
@@ -423,6 +424,7 @@ public class FaceMeshResultGlRenderer extends AppCompatActivity implements Resul
             break;
           case "All":
             drawAllPoint(result.multiFaceLandmarks().get(i).getLandmarkList());
+            break;
         }
       }
       /* // 絲竹空
