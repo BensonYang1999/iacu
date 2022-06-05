@@ -211,7 +211,7 @@ public class DiagnosisActivity extends AppCompatActivity {
                                 Log.i("List size", String.valueOf(acu_list.size()));
                                 String cont = object.getString("continue");
                                 Log.i("Continue", cont);
-                                if (cont.equals("false")) {
+                                if (cont.equals("false") && acu_list.size()!=0) {
                                     Toast.makeText(getApplicationContext(), acu_list.get(0), Toast.LENGTH_SHORT).show();
                                     GlobalVariable gv = GlobalVariable.getInstance();
                                     gv.setAcupoint(acu_list.get(0));
