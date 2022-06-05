@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,6 +31,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -73,13 +76,19 @@ public class DiagnosisActivity extends AppCompatActivity {
         mMessageAdapter = new MessageListAdapter(arrayList);
         mRecyclerView.setAdapter(mMessageAdapter);
 
+        Button btn_send_message = (Button) findViewById(R.id.button_gchat_send);
+        Button btn_show_acupoint = (Button) findViewById(R.id.btn_show_acp);
+        Button btn_stop_diagnosis = (Button) findViewById(R.id.btn_stop_diag);
+
+        // acupoint list
+        List<String> acu_list = new ArrayList<>();
 
         // send initial message to server
         okHttpClient = new OkHttpClient();
         RequestBody formbody_init
                 = new FormBody.Builder()
                 .add("uid", uniqueID)
-                .add("user_name", "貴賓")
+                .add("user_name", "老兄")
                 .build();
         Request request_init = new Request.Builder().url("http://benson.myftp.org:3001/init/")
                 .post(formbody_init)
@@ -128,12 +137,14 @@ public class DiagnosisActivity extends AppCompatActivity {
 
         // send message button
         text_message = findViewById(R.id.edit_gchat_message);
-        Button btn_send_message = (Button) findViewById(R.id.button_gchat_send);
         btn_send_message.setOnClickListener((v)->{
             if (text_message.getText().toString().trim().length() == 0){
                 Toast.makeText(this, "No input words", Toast.LENGTH_SHORT).show();
                 return;
             }
+
+            acu_list.clear();
+
             HashMap<String, String> hashMap = new HashMap<>();
             hashMap.put("user", "me");
             hashMap.put("message", text_message.getText().toString());
@@ -165,7 +176,7 @@ public class DiagnosisActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getApplicationContext(), "server down", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Unable to connect to server", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -190,7 +201,6 @@ public class DiagnosisActivity extends AppCompatActivity {
                                 mMessageAdapter.notifyItemChanged(arrayList.size());
 
                                 JSONArray acu_json = object.getJSONArray("acu_points");
-                                List<String> acu_list = new ArrayList<>();
                                 for (int i=0; i<acu_json.length(); i++) {
                                     acu_list.add(acu_json.getString(i));
                                 }
@@ -198,12 +208,18 @@ public class DiagnosisActivity extends AppCompatActivity {
                                 String cont = object.getString("continue");
                                 Log.i("Continue", cont);
                                 if (cont.equals("false") && acu_list.size()!=0) {
-                                    Toast.makeText(getApplicationContext(), acu_list.get(0), Toast.LENGTH_SHORT).show();
+                                    /*Toast.makeText(getApplicationContext(), acu_list.get(0), Toast.LENGTH_SHORT).show();
                                     GlobalVariable gv = GlobalVariable.getInstance();
                                     gv.setAcupoint((String[]) acu_list.toArray(new String[acu_list.size()]));
                                     Intent intent = new Intent();
                                     intent.setClass(DiagnosisActivity.this, CameraActivity.class);
-                                    startActivity(intent);
+                                    startActivity(intent);*/
+
+                                    btn_stop_diagnosis.setVisibility(View.INVISIBLE);
+                                    btn_show_acupoint.setVisibility(View.VISIBLE);
+                                }else{
+                                    btn_stop_diagnosis.setVisibility(View.VISIBLE);
+                                    btn_show_acupoint.setVisibility(View.INVISIBLE);
                                 }
 
                             } catch (IOException | JSONException e) {
@@ -219,6 +235,47 @@ public class DiagnosisActivity extends AppCompatActivity {
 
         });
 
+        // show acupoint button
+        btn_show_acupoint.setOnClickListener((v -> {
+            Toast.makeText(getApplicationContext(), Arrays.toString(acu_list.toArray()), Toast.LENGTH_SHORT).show();
+            GlobalVariable gv = GlobalVariable.getInstance();
+            gv.setAcupoint((String[]) acu_list.toArray(new String[acu_list.size()]));
+            Intent intent = new Intent();
+            intent.setClass(DiagnosisActivity.this, CameraActivity.class);
+            startActivity(intent);
+            btn_stop_diagnosis.setVisibility(View.INVISIBLE);
+        }));
 
+        // stop diagnosis button
+        btn_stop_diagnosis.setOnClickListener(v -> {
+            text_message.setText("沒有症狀了");
+            btn_send_message.performClick();
+            closeKeyboard();
+        });
+
+    }
+
+    private void closeKeyboard()
+    {
+        // this will give us the view
+        // which is currently focus
+        // in this layout
+        View view = this.getCurrentFocus();
+
+        // if nothing is currently
+        // focus then this will protect
+        // the app from crash
+        if (view != null) {
+
+            // now assign the system
+            // service to InputMethodManager
+            InputMethodManager manager
+                    = (InputMethodManager)
+                    getSystemService(
+                            Context.INPUT_METHOD_SERVICE);
+            manager
+                    .hideSoftInputFromWindow(
+                            view.getWindowToken(), 0);
+        }
     }
 }

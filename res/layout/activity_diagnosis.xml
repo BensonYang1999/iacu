@@ -56,28 +56,72 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-
-        <EditText
-            android:id="@+id/edit_gchat_message"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
-            android:layout_toStartOf="@+id/button_gchat_send"
-            android:background="@android:color/transparent"
-            android:hint="Enter Message"
-            android:inputType="text"
-            android:maxLines="6"
-            tools:ignore="Autofill" />
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button_gchat_send"
-            android:layout_width="64dp"
-            android:layout_height="48dp"
-            android:layout_alignParentEnd="true"
-            android:background="?attr/selectableItemBackground"
-            android:text="Send"
-            android:textColor="@color/colorPrimary" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/edit_gchat_message"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="88"
+                    android:layout_marginStart="16dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Enter Message"
+                    android:inputType="text"
+                    android:maxLines="6"
+                    android:minHeight="48dp"
+                    android:textColorHint="#546E7A"
+                    tools:ignore="Autofill" />
+
+                <Button
+                    android:id="@+id/button_gchat_send"
+                    android:layout_width="64dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:text="Send"
+                    android:textColor="@color/colorPrimary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_stop_diag"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".5"
+                    android:background="?attr/selectableItemBackground"
+                    android:focusable="auto"
+                    android:text="沒有症狀了👈"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHighlight="#00FFFFFF"
+                    android:textColorHint="#00FFFFFF"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/btn_show_acp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:background="?attr/selectableItemBackground"
+                    android:text="按摩穴道👈"
+                    android:textColor="@color/colorPrimary"
+                    android:textColorHint="#00FFFFFF"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+        </LinearLayout>
+
 
     </RelativeLayout>
 
