@@ -35,6 +35,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.mediapipe.examples.facemesh.databinding.ActivityLearningBinding;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +44,7 @@ public class LearningActivity extends AppCompatActivity {
 
 //    private AppBarConfiguration appBarConfiguration;
     private ActivityLearningBinding binding;
+    GlobalVariable gv = GlobalVariable.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,10 @@ public class LearningActivity extends AppCompatActivity {
             public void onClick(View view) {
                 GlobalVariable gv = GlobalVariable.getInstance();
                 gv.setAcupoint(new String[]{"All"});
+                JSONArray jsonArray = gv.getAcuJson();
+                int[] idx = new int[jsonArray.length()];
+                for (int i=0; i<jsonArray.length(); i++) { idx[i] = i; }
+                gv.setAcuIdx(idx);
                 Intent intent = new Intent();
                 intent.setClass(LearningActivity.this, CameraActivity.class);
                 startActivity(intent);
@@ -65,7 +72,7 @@ public class LearningActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabs);
         ViewPager2 viewPager = findViewById(R.id.viewpager);
 
-        String title[] = {"依穴道", "依症狀"};
+        String title[] = {"依穴道", "依疾病"};
         int pos = 0;
 
         FragmentAdapter fragmentAdapter = new FragmentAdapter(getSupportFragmentManager(), getLifecycle());

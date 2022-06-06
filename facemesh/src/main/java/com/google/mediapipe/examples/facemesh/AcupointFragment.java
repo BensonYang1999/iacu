@@ -37,6 +37,7 @@ public class AcupointFragment extends Fragment {
     SimpleAdapter simpleAdapter;
     GlobalVariable gv = GlobalVariable.getInstance();
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
+    ArrayList<String> arrayName = new ArrayList<String>();
 
     public AcupointFragment() {
         // Required empty public constructor
@@ -47,15 +48,14 @@ public class AcupointFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    String[] name = {"絲竹空","印堂", "魚腰", "球後", "上迎香", "俠承漿", "睛明", "攢竹", "瞳子髎", "陽白", "承泣", "四白", "巨髎", "地倉", "顴髎", "水溝", "禾髎", "迎香", "承漿", "太陽", "孔最", "內觀", "梁秋", "銀門", "光明"};
+//    String[] name = {"絲竹空","印堂", "魚腰", "球後", "上迎香", "俠承漿", "睛明", "攢竹", "瞳子髎", "陽白", "承泣", "四白", "巨髎", "地倉", "顴髎", "水溝", "禾髎", "迎香", "承漿", "太陽", "孔最", "內觀", "梁秋", "銀門", "光明"};
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_acupoint, container, false);
         ListView listView = rootView.findViewById(R.id.listview_acu);
-
+        JSONArray jsonArray = gv.getAcuJson();
         try {
-            JSONArray jsonArray = new JSONArray(loadJSONFromAsset("acupoint.json"));
             for (int i=0; i<jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
                 HashMap<String, String> m_li = new HashMap<String, String >();
@@ -63,8 +63,8 @@ public class AcupointFragment extends Fragment {
                 m_li.put("資料", "代碼 " + object.getString("代碼") + "\n" + "別名 " + object.getString("別名"));
 //                m_li.put("別名", "別名 " + object.getString("別名"));
                 arrayList.add(m_li);
+                arrayName.add(object.getString("穴道"));
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -96,6 +96,7 @@ public class AcupointFragment extends Fragment {
                 HashMap<String, String> h_temp = new HashMap<String, String>((Map<String, String>) listViewTemp.getItemAtPosition(i));
                 Toast.makeText(getActivity(), h_temp.get("穴道"), Toast.LENGTH_SHORT).show();
                 gv.setAcupoint(new String[]{h_temp.get("穴道")});
+                gv.setAcuIdx(new int[]{arrayName.indexOf(h_temp.get("穴道"))});
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), CameraActivity.class);
                 startActivity(intent);

@@ -11,7 +11,16 @@ import android.widget.SearchView;
 
 import com.google.android.material.tabs.TabLayout;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+
 public class MenuActivity extends AppCompatActivity {
+    GlobalVariable gv = GlobalVariable.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,5 +40,27 @@ public class MenuActivity extends AppCompatActivity {
             intent.setClass(MenuActivity.this, DiagnosisActivity.class);
             startActivity(intent);
         });
+
+        try {
+            gv.setAcuJson(loadJSONFromAsset("acupoint.json"));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String loadJSONFromAsset(String filename) {
+        String json_data = null;
+        try {
+            InputStream inputStream = this.getAssets().open("acupoint.json");
+            int size = inputStream.available();
+            byte buffer[] = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json_data = new String(buffer, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return json_data;
     }
 }

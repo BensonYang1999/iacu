@@ -16,23 +16,22 @@ package com.google.mediapipe.examples.facemesh;
 
 import static com.google.mediapipe.solutions.facemesh.FaceMeshConnections.*;
 
-import android.app.Application;
 import android.opengl.GLES20;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.mediapipe.formats.proto.LandmarkProto.NormalizedLandmark;
 import com.google.mediapipe.solutioncore.ResultGlRenderer;
-import com.google.mediapipe.solutions.facemesh.FaceMesh;
-import com.google.mediapipe.solutions.facemesh.FaceMeshConnections;
 import com.google.mediapipe.solutions.facemesh.FaceMeshResult;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-import java.util.Arrays;
 import java.util.List;
 
 /** A custom implementation of {@link ResultGlRenderer} to render {@link FaceMeshResult}. */
@@ -95,6 +94,8 @@ public class FaceMeshResultGlRenderer extends AppCompatActivity implements Resul
 
   GlobalVariable gv = GlobalVariable.getInstance();
   String[] acupoint = gv.getAcupoint();
+  JSONArray acuJsonArry = gv.getAcuJson();
+  int[] acuIdx = gv.getAcuIdx();
 
   @Override
   public void renderResult(FaceMeshResult result, float[] projectionMatrix) {
@@ -108,55 +109,43 @@ public class FaceMeshResultGlRenderer extends AppCompatActivity implements Resul
 
     int numFaces = result.multiFaceLandmarks().size();
     for (int i = 0; i < numFaces; ++i) {
-      /*drawLandmarks(
-          result.multiFaceLandmarks().get(i).getLandmarkList(),
-          FACEMESH_TESSELATION,
-          TESSELATION_COLOR,
-          TESSELATION_THICKNESS);
-      /*drawLandmarks(
-          result.multiFaceLandmarks().get(i).getLandmarkList(),
-          FACEMESH_RIGHT_EYE,
-          RIGHT_EYE_COLOR,
-          RIGHT_EYE_THICKNESS);
-      drawLandmarks(
-          result.multiFaceLandmarks().get(i).getLandmarkList(),
-          FACEMESH_RIGHT_EYEBROW,
-          RIGHT_EYEBROW_COLOR,
-          RIGHT_EYEBROW_THICKNESS);
-      drawLandmarks(
-          result.multiFaceLandmarks().get(i).getLandmarkList(),
-          FACEMESH_LEFT_EYE,
-          LEFT_EYE_COLOR,
-          LEFT_EYE_THICKNESS);
-      drawLandmarks(
-          result.multiFaceLandmarks().get(i).getLandmarkList(),
-          FACEMESH_LEFT_EYEBROW,
-          LEFT_EYEBROW_COLOR,
-          LEFT_EYEBROW_THICKNESS);
-      drawLandmarks(
-          result.multiFaceLandmarks().get(i).getLandmarkList(),
-          FACEMESH_FACE_OVAL,
-          FACE_OVAL_COLOR,
-          FACE_OVAL_THICKNESS);
-      drawLandmarks(
-          result.multiFaceLandmarks().get(i).getLandmarkList(),
-          FACEMESH_LIPS,
-          LIPS_COLOR,
-          LIPS_THICKNESS);
-      if (result.multiFaceLandmarks().get(i).getLandmarkCount()
-          == FaceMesh.FACEMESH_NUM_LANDMARKS_WITH_IRISES) {
-        drawLandmarks(
-            result.multiFaceLandmarks().get(i).getLandmarkList(),
-            FACEMESH_RIGHT_IRIS,
-            RIGHT_EYE_COLOR,
-            RIGHT_EYE_THICKNESS);
-        drawLandmarks(
-            result.multiFaceLandmarks().get(i).getLandmarkList(),
-            FACEMESH_LEFT_IRIS,
-            LEFT_EYE_COLOR,
-            LEFT_EYE_THICKNESS);
-      }*/
-      int[] L = new int[2];
+      for (int idx : acuIdx) {
+        try {
+          JSONObject acu_data = (JSONObject) acuJsonArry.getJSONObject(idx).get("穴道位置");
+          JSONArray jsonArray = acu_data.getJSONArray("內容");
+          int[] points = new int[jsonArray.length()];
+          for (int j=0; j<jsonArray.length(); j++) {
+            points[j] = jsonArray.getInt(j);
+          }
+          if (acu_data.getInt("模式") == 1) {
+            for (int j=0; j<acu_data.getInt("數量"); j++) {
+              drawPoint(
+                      result.multiFaceLandmarks().get(i).getLandmarkList(),
+                      points[j],
+                      TEST_COLOR,
+                      TEST_THICKNESS);
+            }
+          } else {
+            for (int j=0; j<acu_data.getInt("數量"); j++) {
+              int[] point = {points[j*2], points[j*2+1]};
+              drawAvgPoint(
+                      result.multiFaceLandmarks().get(i).getLandmarkList(),
+                      point,
+                      TEST_COLOR,
+                      TEST_THICKNESS);
+            }
+          }
+        } catch (JSONException e) {
+          e.printStackTrace();
+        }
+      }
+
+
+
+
+
+
+      /*int[] L = new int[2];
       int[] R = new int[2];
       float[] prop = new float[2];
       for(String s : acupoint) {
@@ -426,7 +415,7 @@ public class FaceMeshResultGlRenderer extends AppCompatActivity implements Resul
             drawAllPoint(result.multiFaceLandmarks().get(i).getLandmarkList());
             break;
         }
-      }
+      }*/
       /* // 絲竹空
       L[0] = 46;
       L[1] = 70;

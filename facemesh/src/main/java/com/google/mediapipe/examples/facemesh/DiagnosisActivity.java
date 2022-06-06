@@ -49,6 +49,7 @@ import okhttp3.Response;
 
 
 public class DiagnosisActivity extends AppCompatActivity {
+    GlobalVariable gv = GlobalVariable.getInstance();
 
     String uniqueID = UUID.randomUUID().toString();
 //    String uniqueID = "123456789";
@@ -60,6 +61,8 @@ public class DiagnosisActivity extends AppCompatActivity {
     DateFormat df_time = new SimpleDateFormat("h:mm a");
     DateFormat df_date = new SimpleDateFormat("MMM d", Locale.ENGLISH);
     String time, date;
+
+    ArrayList<String> arrayName = new ArrayList<String>();
 
     private OkHttpClient okHttpClient;
 
@@ -79,6 +82,17 @@ public class DiagnosisActivity extends AppCompatActivity {
         Button btn_send_message = (Button) findViewById(R.id.button_gchat_send);
         Button btn_show_acupoint = (Button) findViewById(R.id.btn_show_acp);
         Button btn_stop_diagnosis = (Button) findViewById(R.id.btn_stop_diag);
+
+        // load acupoint database
+        JSONArray jsonArray = gv.getAcuJson();
+        try {
+            for (int i=0; i<jsonArray.length(); i++) {
+                JSONObject object = jsonArray.getJSONObject(i);
+                arrayName.add(object.getString("穴道"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         // acupoint list
         List<String> acu_list = new ArrayList<>();
@@ -240,6 +254,11 @@ public class DiagnosisActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), Arrays.toString(acu_list.toArray()), Toast.LENGTH_SHORT).show();
             GlobalVariable gv = GlobalVariable.getInstance();
             gv.setAcupoint((String[]) acu_list.toArray(new String[acu_list.size()]));
+            int[] idx = new int[acu_list.size()];
+            for (int i=0; i<acu_list.size(); i++) {
+                idx[i] = arrayName.indexOf(acu_list.get(i));
+            }
+            gv.setAcuIdx(idx);
             Intent intent = new Intent();
             intent.setClass(DiagnosisActivity.this, CameraActivity.class);
             startActivity(intent);

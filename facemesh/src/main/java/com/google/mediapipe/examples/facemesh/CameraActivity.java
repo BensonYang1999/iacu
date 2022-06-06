@@ -85,20 +85,6 @@ public class CameraActivity extends AppCompatActivity {
         }
     }
 
-
-    /** Sets up the UI components for the live demo with camera input. */
-    private void setupLiveDemoUiComponents() {
-        Button startCameraButton = findViewById(R.id.button_start_camera);
-        startCameraButton.setOnClickListener(
-                v -> {
-                    if (inputSource == InputSource.CAMERA) {
-                        return;
-                    }
-                    stopCurrentPipeline();
-                    setupStreamingModePipeline(InputSource.CAMERA);
-                });
-    }
-
     /** Sets up core workflow for streaming mode. */
     private void setupStreamingModePipeline(InputSource inputSource) {
         this.inputSource = inputSource;
