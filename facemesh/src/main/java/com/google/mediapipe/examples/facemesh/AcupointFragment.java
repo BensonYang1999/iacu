@@ -18,6 +18,8 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class AcupointFragment extends Fragment {
     ArrayAdapter<String> arrayAdapter;
     GlobalVariable gv = GlobalVariable.getInstance();
@@ -42,8 +44,9 @@ public class AcupointFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getActivity(), name[i], Toast.LENGTH_SHORT).show();
-                gv.setAcupoint(new String[]{name[i]});
+                ListView listViewTemp = (ListView) adapterView;
+                Toast.makeText(getActivity(), listViewTemp.getItemAtPosition(i).toString(), Toast.LENGTH_SHORT).show();
+                gv.setAcupoint(new String[]{listViewTemp.getItemAtPosition(i).toString()});
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), CameraActivity.class);
                 startActivity(intent);
