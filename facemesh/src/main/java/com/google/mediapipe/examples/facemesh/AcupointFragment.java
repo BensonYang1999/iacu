@@ -1,6 +1,7 @@
 package com.google.mediapipe.examples.facemesh;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -29,6 +30,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -83,6 +85,8 @@ public class AcupointFragment extends Fragment {
 
                 TextView text2 = view.findViewById(android.R.id.text2);
                 text2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+                text2.setTextColor(Color.rgb(136,136,136));
+
 
                 return view;
             }
@@ -129,19 +133,5 @@ public class AcupointFragment extends Fragment {
         });
     }
 
-    public String loadJSONFromAsset(String filename) {
-        String json_data = null;
-        try {
-            InputStream inputStream = getActivity().getAssets().open("acupoint.json");
-            int size = inputStream.available();
-            byte buffer[] = new byte[size];
-            inputStream.read(buffer);
-            inputStream.close();
-            json_data = new String(buffer, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-        return json_data;
-    }
+
 }

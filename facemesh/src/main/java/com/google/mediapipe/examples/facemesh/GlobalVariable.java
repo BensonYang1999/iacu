@@ -11,6 +11,10 @@ public class GlobalVariable extends Application{
     private JSONArray acu_jsonarry = null;
     private int acu_idx[] = {0};
 
+    private String Disease[] = {"test"};
+    private JSONArray dis_jsonarry = null;
+    private int dis_idx[] = {0};
+
     public static GlobalVariable getInstance(){
         if (mInstance == null){
             synchronized (GlobalVariable.class){
@@ -45,5 +49,31 @@ public class GlobalVariable extends Application{
 
     public int[] getAcuIdx() {
         return acu_idx;
+    }
+
+
+    public void setDisease(String[] disease) {
+        this.Disease = disease;
+    }
+
+    public void setDisJson(String jsonArray) throws JSONException {
+        this.dis_jsonarry = new JSONArray(jsonArray);
+    }
+
+    public void setDisIdx(int[] index) {
+        this.dis_idx = index;
+    }
+
+
+    public String[] getDisease() {
+        return Disease;
+    }
+
+    public JSONArray getDisJson() {
+        return dis_jsonarry;
+    }
+
+    public int[] getDisIdx() {
+        return dis_idx;
     }
 }

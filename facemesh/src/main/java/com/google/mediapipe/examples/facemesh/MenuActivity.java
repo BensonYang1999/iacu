@@ -2,12 +2,15 @@ package com.google.mediapipe.examples.facemesh;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -43,15 +46,18 @@ public class MenuActivity extends AppCompatActivity {
 
         try {
             gv.setAcuJson(loadJSONFromAsset("acupoint.json"));
+            gv.setDisJson(loadJSONFromAsset("disease_to_acu.json"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
+
+
     public String loadJSONFromAsset(String filename) {
         String json_data = null;
         try {
-            InputStream inputStream = this.getAssets().open("acupoint.json");
+            InputStream inputStream = this.getAssets().open(filename);
             int size = inputStream.available();
             byte buffer[] = new byte[size];
             inputStream.read(buffer);
