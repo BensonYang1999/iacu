@@ -123,7 +123,8 @@ public class SymptomFragment extends Fragment {
                     int[] idx = new int[acu_list.size()];
                     for (int j = 0; j < acu_list.size(); j++) {
 //                        idx[j] = arrayName.indexOf(acu_list.get(j));
-                        idx[j] = j;
+                        idx[j] = get_id_by_acu_name(acu_list.get(j));
+//                        idx[j] = j;
                     }
                     gv.setAcuIdx(idx);
                     Toast.makeText(getActivity(), Arrays.toString(acu_list.toArray()), Toast.LENGTH_SHORT).show();
@@ -193,6 +194,21 @@ public class SymptomFragment extends Fragment {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public int get_id_by_acu_name(String acu_name){
+        String[] name = {"絲竹空","印堂", "魚腰", "球後", "上迎香", "俠承漿", "睛明", "攢竹", "瞳子髎", "陽白", "承泣", "四白", "巨髎", "地倉", "顴髎", "水溝", "禾髎", "迎香", "承漿", "太陽", "孔最", "內觀", "梁秋", "銀門", "光明"};
+        int index = 0;
+        for (String acu: name) {
+//            Toast.makeText(getActivity(), acu + acu_name, Toast.LENGTH_SHORT).show();
+
+            if (acu_name.equals(acu) ){
+                return index;
+            }else{
+                index+=1;
+            }
+        }
+        return 100;
     }
 
 }
