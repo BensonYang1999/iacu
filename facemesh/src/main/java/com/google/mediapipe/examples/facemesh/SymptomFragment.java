@@ -107,11 +107,13 @@ public class SymptomFragment extends Fragment {
 //                Intent intent = new Intent();
 //                intent.setClass(getActivity(), CameraActivity.class);
 //                startActivity(intent);
-
+                ListView listViewTemp = (ListView) adapterView;
+                HashMap<String, String> h_temp = new HashMap<String, String>((Map<String, String>) listViewTemp.getItemAtPosition(i));
                 try {
                     // acupoint list
                     List<String> acu_list = new ArrayList<>();
-                    JSONObject object = jsonArray.getJSONObject(i);
+//                    JSONObject object = jsonArray.getJSONObject(i);
+                    JSONObject object = get_obj_by_disease_name(jsonArray,h_temp.get("疾病"));
                     JSONArray acu_json = object.getJSONArray("對應穴道");
                     for (int j = 0; j < acu_json.length(); j++) {
                         acu_list.add(acu_json.getString(j));
@@ -155,6 +157,7 @@ public class SymptomFragment extends Fragment {
 //        return rootView;
     }
 
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu, menu);
@@ -177,4 +180,19 @@ public class SymptomFragment extends Fragment {
             }
         });
     }
+
+    public JSONObject get_obj_by_disease_name(JSONArray jsonArray,String disease_name){
+        try {
+            for (int j = 0; j < jsonArray.length(); j++) {
+                JSONObject object = jsonArray.getJSONObject(j);
+                if (object.getString(("疾病")) == disease_name){
+                    return object;
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
