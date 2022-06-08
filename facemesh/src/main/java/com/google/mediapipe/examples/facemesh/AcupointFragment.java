@@ -79,7 +79,7 @@ public class AcupointFragment extends Fragment {
                 View view = super.getView(position, convertView, parent);
 
                 TextView text1 = view.findViewById(android.R.id.text1);
-                text1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+                text1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
 //                TextPaint tp = text1.getPaint();
 //                tp.setFakeBoldText(true);
 

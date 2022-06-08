@@ -46,7 +46,6 @@ public class MenuActivity extends AppCompatActivity {
 
         try {
             gv.setAcuJson(loadJSONFromAsset("acupoint.json"));
-            gv.setDisJson(loadJSONFromAsset("disease_to_acu.json"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

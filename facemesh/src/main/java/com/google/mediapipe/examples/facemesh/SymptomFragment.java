@@ -41,7 +41,7 @@ public class SymptomFragment extends Fragment {
     GlobalVariable gv = GlobalVariable.getInstance();
     ArrayList<HashMap<String, String>> arrayList = new ArrayList<HashMap<String, String>>();
     ArrayList<String> arrayName = new ArrayList<String>();
-
+    JSONArray disease_jsonarry;
 
     public SymptomFragment() {
         // Required empty public constructor
@@ -51,6 +51,31 @@ public class SymptomFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
+        // load acupoint database
+        JSONArray jsonArray = gv.getAcuJson();
+        try {
+            for (int i=0; i<jsonArray.length(); i++) {
+                JSONObject object = jsonArray.getJSONObject(i);
+                arrayName.add(object.getString("穴道"));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // load disease database
+        try {
+            disease_jsonarry = new JSONArray(loadJSONFromAsset("disease_to_acu.json"));
+            for (int i=0; i<disease_jsonarry.length(); i++) {
+                JSONObject object = disease_jsonarry.getJSONObject(i);
+                HashMap<String, String> m_li = new HashMap<String, String >();
+                m_li.put("疾病", object.getString("疾病"));
+                m_li.put("資料", "對應穴道：" + object.getString("對應穴道") );
+                arrayList.add(m_li);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 //    String[] name = {"眼球震顫","新生兒窒息急性鼻竇炎","假性近視","新生兒痙攣","外斜視","流眼淚","視神經萎縮","淚囊炎","上牙痛","眼瞼緣炎","眼瞼下垂","眼部疲勞","中心漿液性視網膜病變","假性延髓麻痺","針刺麻醉陣痛","齒齦潰瘍","眶上神經痛","失明","重型顱腦損傷","充血性心臟衰竭","子癇","鼻竇炎","鼻塞","鼻息肉","煤氣中毒","嗅覺麻痺","術前焦慮","眼睛紅腫","眼眶脹痛","眼球後神經炎","眼花","眼內或周圍疼痛","病毒性腦炎","面腫","面神經炎","流涕","急性結膜炎","青光眼","抽筋","妥瑞癥","小兒熱痙攣","上肢麻痺","三叉神經痛(第三支痛)","三叉神經痛(第二支痛)","顳顎關節癥候群","熱痙攣","破傷風","反射性交感神經營養不良","口臭","三叉神經痛","頭暈","口瘡","四肢麻痺","壞疽性口炎","膽道蛔蟲癥","頸性眩暈","鼻炎","暈厥","黃褐斑","乾眼癥","面神經麻痺","苯中毒","流涎","阻塞型睡眠呼吸中止癥","近視","昏迷","低血壓","色盲","牙痛","中風後打嗝","三叉神經痛(第一支痛)","術後疼痛","偏頭痛","急性腰扭傷","急性下背痛","耳聾","中風後失眠","過敏性鼻炎","腹瀉","歇斯底里癥","麥粒腫","酒渣鼻","胸悶","氣喘","水腫","心因性嘔吐癥","癲癇","頭痛","鼻血","精神官能癥","視神經炎","眼球疾患","帶狀皰疹","高血壓","眩暈","消化不良","帕金森氏癥","夜盲","周邊神經病變","角膜結膜炎","抑鬱癥","耳鳴","失眠","中風"};
@@ -60,20 +85,6 @@ public class SymptomFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_symptom, container, false);
         ListView listView = rootView.findViewById(R.id.listview_sym);
-        JSONArray jsonArray = gv.getDisJson();
-        try {
-            for (int i=0; i<jsonArray.length(); i++) {
-                JSONObject object = jsonArray.getJSONObject(i);
-                HashMap<String, String> m_li = new HashMap<String, String >();
-                m_li.put("疾病", object.getString("疾病"));
-                m_li.put("資料", "對應穴道：" + object.getString("對應穴道") );
-//                m_li.put("別名", "別名 " + object.getString("別名"));
-                arrayList.add(m_li);
-                arrayName.add(object.getString("疾病"));
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
         String[] keys =  {"疾病", "資料"};
         int[] ids = {android.R.id.text1, android.R.id.text2};
@@ -83,7 +94,7 @@ public class SymptomFragment extends Fragment {
                 View view = super.getView(position, convertView, parent);
 
                 TextView text1 = view.findViewById(android.R.id.text1);
-                text1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+                text1.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
 
 //                TextPaint tp = text1.getPaint();
 //                tp.setFakeBoldText(true);
@@ -99,63 +110,25 @@ public class SymptomFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                ListView listViewTemp = (ListView) adapterView;
-//                HashMap<String, String> h_temp = new HashMap<String, String>((Map<String, String>) listViewTemp.getItemAtPosition(i));
-//                Toast.makeText(getActivity(), h_temp.get("疾病"), Toast.LENGTH_SHORT).show();
-//                gv.setDisease(new String[]{h_temp.get("疾病")});
-//                gv.setDisIdx(new int[]{arrayName.indexOf(h_temp.get("疾病"))});
-//                Intent intent = new Intent();
-//                intent.setClass(getActivity(), CameraActivity.class);
-//                startActivity(intent);
                 ListView listViewTemp = (ListView) adapterView;
                 HashMap<String, String> h_temp = new HashMap<String, String>((Map<String, String>) listViewTemp.getItemAtPosition(i));
                 try {
-                    // acupoint list
-                    List<String> acu_list = new ArrayList<>();
-//                    JSONObject object = jsonArray.getJSONObject(i);
-                    JSONObject object = get_obj_by_disease_name(jsonArray,h_temp.get("疾病"));
-                    JSONArray acu_json = object.getJSONArray("對應穴道");
-                    for (int j = 0; j < acu_json.length(); j++) {
-                        acu_list.add(acu_json.getString(j));
-                    }
-                    GlobalVariable gv = GlobalVariable.getInstance();
-                    gv.setAcupoint((String[]) acu_list.toArray(new String[acu_list.size()]));
-                    int[] idx = new int[acu_list.size()];
-                    for (int j = 0; j < acu_list.size(); j++) {
-//                        idx[j] = arrayName.indexOf(acu_list.get(j));
-                        idx[j] = get_id_by_acu_name(acu_list.get(j));
-//                        idx[j] = j;
+                    JSONArray acu_jsonarray = new JSONArray(h_temp.get("資料").substring(5));
+                    Toast.makeText(getActivity(), acu_jsonarray.toString(), Toast.LENGTH_SHORT).show();
+                    int[] idx = new int[acu_jsonarray.length()];
+                    for (int j=0; j<acu_jsonarray.length(); j++) {
+                        idx[j] = arrayName.indexOf(acu_jsonarray.get(j));
                     }
                     gv.setAcuIdx(idx);
-                    Toast.makeText(getActivity(), Arrays.toString(acu_list.toArray()), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent();
                     intent.setClass(getActivity(), CameraActivity.class);
                     startActivity(intent);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         });
         return rootView;
-
-//        arrayAdapter = new ArrayAdapter<String>( getActivity(), android.R.layout.simple_list_item_1, name);
-//        listView.setAdapter(arrayAdapter);
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                List<String> acu_list = Arrays.asList(acu_array[i]);
-//
-//                Toast.makeText(getActivity(), Arrays.toString(acu_list.toArray()), Toast.LENGTH_SHORT).show();
-////                Toast.makeText(getApplicationContext(), Arrays.toString(acu_list.toArray()), Toast.LENGTH_SHORT).show();
-//                GlobalVariable gv = GlobalVariable.getInstance();
-//                gv.setAcupoint((String[]) acu_list.toArray(new String[acu_list.size()]));
-//                Intent intent = new Intent();
-//                intent.setClass(getActivity(), CameraActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        return rootView;
     }
 
 
@@ -182,33 +155,20 @@ public class SymptomFragment extends Fragment {
         });
     }
 
-    public JSONObject get_obj_by_disease_name(JSONArray jsonArray,String disease_name){
+    public String loadJSONFromAsset(String filename) {
+        String json_data = null;
         try {
-            for (int j = 0; j < jsonArray.length(); j++) {
-                JSONObject object = jsonArray.getJSONObject(j);
-                if (object.getString(("疾病")) == disease_name){
-                    return object;
-                }
-            }
-        } catch (JSONException e) {
+            InputStream inputStream = getActivity().getAssets().open(filename);
+            int size = inputStream.available();
+            byte buffer[] = new byte[size];
+            inputStream.read(buffer);
+            inputStream.close();
+            json_data = new String(buffer, "UTF-8");
+        } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
-    }
-
-    public int get_id_by_acu_name(String acu_name){
-        String[] name = {"絲竹空","印堂", "魚腰", "球後", "上迎香", "俠承漿", "睛明", "攢竹", "瞳子髎", "陽白", "承泣", "四白", "巨髎", "地倉", "顴髎", "水溝", "禾髎", "迎香", "承漿", "太陽", "孔最", "內觀", "梁秋", "銀門", "光明"};
-        int index = 0;
-        for (String acu: name) {
-//            Toast.makeText(getActivity(), acu + acu_name, Toast.LENGTH_SHORT).show();
-
-            if (acu_name.equals(acu) ){
-                return index;
-            }else{
-                index+=1;
-            }
-        }
-        return 100;
+        return json_data;
     }
 
 }
