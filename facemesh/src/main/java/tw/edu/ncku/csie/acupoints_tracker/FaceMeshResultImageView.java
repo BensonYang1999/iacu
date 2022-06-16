@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.mediapipe.examples.facemesh;
+package tw.edu.ncku.csie.acupoints_tracker;
 
 import android.content.Context;
 import android.graphics.Bitmap;

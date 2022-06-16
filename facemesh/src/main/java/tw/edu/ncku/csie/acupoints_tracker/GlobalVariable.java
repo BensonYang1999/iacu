@@ -1,4 +1,4 @@
-package com.google.mediapipe.examples.facemesh;
+package tw.edu.ncku.csie.acupoints_tracker;
 
 import android.app.Application;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.google.mediapipe.examples.facemesh">
+    package="tw.edu.ncku.csie.acupoints_tracker">
 
     <uses-sdk
         android:minSdkVersion="23"
@@ -23,10 +23,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name="com.google.mediapipe.examples.facemesh.DiagnosisActivity"
+            android:name=".DiagnosisActivity"
             android:exported="false" />
         <activity
-            android:name="com.google.mediapipe.examples.facemesh.CameraActivity"
+            android:name=".CameraActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <!--
@@ -42,7 +42,7 @@
         />
         -->
         <activity
-            android:name="com.google.mediapipe.examples.facemesh.MenuActivity"
+            android:name=".MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,7 +58,7 @@
         -->
         <!-- </activity> -->
         <activity
-            android:name="com.google.mediapipe.examples.facemesh.LearningActivity"
+            android:name=".LearningActivity"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

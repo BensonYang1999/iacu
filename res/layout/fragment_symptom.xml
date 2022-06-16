@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SymptomFragment">
+    tools:context="tw.edu.ncku.csie.acupoints_tracker.SymptomFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ListView

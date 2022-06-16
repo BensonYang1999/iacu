@@ -1,26 +1,15 @@
-package com.google.mediapipe.examples.facemesh;
+package tw.edu.ncku.csie.acupoints_tracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.SearchView;
-import android.widget.Toast;
 
-import com.google.android.material.tabs.TabLayout;
-
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 
 public class MenuActivity extends AppCompatActivity {
     GlobalVariable gv = GlobalVariable.getInstance();

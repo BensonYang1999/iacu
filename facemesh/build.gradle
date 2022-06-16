@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.google.mediapipe.apps.facemesh"
+        applicationId "tw.edu.ncku.csie.acupoints_tracker"
         minSdkVersion 21
         targetSdkVersion 32
         versionCode 1
@@ -31,8 +31,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.exifinterface:exifinterface:1.3.3'
     implementation 'androidx.navigation:navigation-fragment:2.4.2'

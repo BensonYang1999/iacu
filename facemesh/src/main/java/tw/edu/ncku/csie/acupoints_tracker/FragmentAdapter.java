@@ -1,6 +1,4 @@
-package com.google.mediapipe.examples.facemesh;
-
-import android.util.Log;
+package tw.edu.ncku.csie.acupoints_tracker;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

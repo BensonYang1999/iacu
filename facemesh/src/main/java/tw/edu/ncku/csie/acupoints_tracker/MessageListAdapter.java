@@ -1,6 +1,5 @@
-package com.google.mediapipe.examples.facemesh;
+package tw.edu.ncku.csie.acupoints_tracker;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
