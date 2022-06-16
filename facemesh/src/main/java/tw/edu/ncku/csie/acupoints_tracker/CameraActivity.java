@@ -28,9 +28,6 @@ public class CameraActivity extends AppCompatActivity {
         CAMERA,
     }
     private InputSource inputSource = InputSource.UNKNOWN;
-    // Image demo UI and image loader components.
-//    private ActivityResultLauncher<Intent> imageGetter;
-    private FaceMeshResultImageView imageView;
     // Video demo UI and video loader components.
     private VideoInput videoInput;
 //    private ActivityResultLauncher<Intent> videoGetter;
