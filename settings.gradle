@@ -1,2 +1,2 @@
 rootProject.name = "acupoints_tracker"
-include 'app'
+include ':app'
