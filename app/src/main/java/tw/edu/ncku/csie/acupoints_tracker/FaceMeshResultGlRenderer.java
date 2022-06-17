@@ -92,6 +92,7 @@ public class FaceMeshResultGlRenderer extends AppCompatActivity implements Resul
     colorHandle = GLES20.glGetUniformLocation(program, "uColor");
   }
 
+  // loading data from global variables
   GlobalVariable gv = GlobalVariable.getInstance();
   JSONArray acuJsonArry = gv.getAcuJson();
   int[] acuIdx = gv.getAcuIdx();
@@ -106,6 +107,7 @@ public class FaceMeshResultGlRenderer extends AppCompatActivity implements Resul
 
     int numFaces = result.multiFaceLandmarks().size();
     for (int i = 0; i < numFaces; ++i) {
+      // draw points on image
       for (int idx : acuIdx) {
         try {
           JSONObject acu_data = (JSONObject) acuJsonArry.getJSONObject(idx).get("穴道位置");
@@ -114,7 +116,7 @@ public class FaceMeshResultGlRenderer extends AppCompatActivity implements Resul
           for (int j=0; j<jsonArray.length(); j++) {
             points[j] = jsonArray.getInt(j);
           }
-          if (acu_data.getInt("模式") == 1) {
+          if (acu_data.getInt("模式") == 1) { // single point mode
             for (int j=0; j<acu_data.getInt("數量"); j++) {
               drawPoint(
                       result.multiFaceLandmarks().get(i).getLandmarkList(),
@@ -123,7 +125,7 @@ public class FaceMeshResultGlRenderer extends AppCompatActivity implements Resul
                       TEST_THICKNESS);
             }
           } else {
-            for (int j=0; j<acu_data.getInt("數量"); j++) {
+            for (int j=0; j<acu_data.getInt("數量"); j++) { // two point average mode
               int[] point = {points[j*2], points[j*2+1]};
               drawAvgPoint(
                       result.multiFaceLandmarks().get(i).getLandmarkList(),
@@ -137,6 +139,8 @@ public class FaceMeshResultGlRenderer extends AppCompatActivity implements Resul
         }
       }
     }
+
+    // draw face constraint box
     drawFaceBox(
             LEFT_EYEBROW_COLOR,
             LEFT_EYEBROW_THICKNESS);

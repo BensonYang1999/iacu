@@ -29,7 +29,7 @@ public class LearningActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        binding.fab.setOnClickListener(new View.OnClickListener() { // show every acupoints button
             @Override
             public void onClick(View view) {
                 GlobalVariable gv = GlobalVariable.getInstance();

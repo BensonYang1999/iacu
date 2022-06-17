@@ -33,6 +33,7 @@ public class MenuActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // loading data from json file and save to global variables
         try {
             gv.setAcuJson(loadJSONFromAsset("acupoint.json"));
         } catch (JSONException e) {

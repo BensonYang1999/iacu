@@ -41,10 +41,12 @@ import okhttp3.Response;
 
 
 public class DiagnosisActivity extends AppCompatActivity {
+    String URL = "http://benson.myftp.org:3001/init/";
+
     GlobalVariable gv = GlobalVariable.getInstance();
 
+    // generate user id
     String uniqueID = UUID.randomUUID().toString();
-//    String uniqueID = "123456789";
 
     RecyclerView mRecyclerView;
     MessageListAdapter mMessageAdapter;
@@ -75,7 +77,7 @@ public class DiagnosisActivity extends AppCompatActivity {
         Button btn_show_acupoint = (Button) findViewById(R.id.btn_show_acp);
         Button btn_stop_diagnosis = (Button) findViewById(R.id.btn_stop_diag);
 
-        // load acupoint database
+        // load disease database
         JSONArray jsonArray = gv.getAcuJson();
         try {
             for (int i=0; i<jsonArray.length(); i++) {
@@ -86,7 +88,7 @@ public class DiagnosisActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // acupoint list
+        // initial acupoint list
         List<String> acu_list = new ArrayList<>();
 
         // send initial message to server
@@ -96,7 +98,7 @@ public class DiagnosisActivity extends AppCompatActivity {
                 .add("uid", uniqueID)
                 .add("user_name", "老兄")
                 .build();
-        Request request_init = new Request.Builder().url("http://benson.myftp.org:3001/init/")
+        Request request_init = new Request.Builder().url(URL)
                 .post(formbody_init)
                 .build();
         okHttpClient.newCall(request_init).enqueue(new Callback() {
@@ -118,12 +120,14 @@ public class DiagnosisActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         try {
+                            // get response from server
                             Log.i("response", response.toString());
                             String jsonData = response.body().string();
                             JSONObject object = new JSONObject(jsonData);
                             String uid = object.getString("uid");
                             String question = object.getString("question");
 
+                            // passing information to chatbox message item
                             HashMap<String, String> hashMap = new HashMap<>();
                             hashMap.put("user", "server");
                             hashMap.put("message", question);
@@ -161,17 +165,16 @@ public class DiagnosisActivity extends AppCompatActivity {
 
             arrayList.add(hashMap);
 
-
-//            mMessageAdapter.notifyDataSetChanged();
             mMessageAdapter.notifyItemChanged(arrayList.size());
 
+            // send user's type in message to the server
             okHttpClient = new OkHttpClient();
             RequestBody formbody
                     = new FormBody.Builder()
                     .add("uid", uniqueID)
                     .add("answer", text_message.getText().toString())
                     .build();
-            Request request = new Request.Builder().url("http://benson.myftp.org:3001/ask/")
+            Request request = new Request.Builder().url(URL)
                     .post(formbody)
                     .build();
             okHttpClient.newCall(request).enqueue(new Callback() {
@@ -193,11 +196,13 @@ public class DiagnosisActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             try {
+                                // get response from server
                                 String jsonData = response.body().string();
                                 JSONObject object = new JSONObject(jsonData);
                                 String uid = object.getString("uid");
                                 String response_json = object.getString("response");
 
+                                // passing information to chatbox message item
                                 HashMap<String, String> hashMap = new HashMap<>();
                                 hashMap.put("user", "server");
                                 hashMap.put("message", response_json);
@@ -206,6 +211,7 @@ public class DiagnosisActivity extends AppCompatActivity {
                                 arrayList.add(hashMap);
                                 mMessageAdapter.notifyItemChanged(arrayList.size());
 
+                                // parsing data form incoming message
                                 JSONArray acu_json = object.getJSONArray("acu_points");
                                 for (int i=0; i<acu_json.length(); i++) {
                                     acu_list.add(acu_json.getString(i));
@@ -214,13 +220,6 @@ public class DiagnosisActivity extends AppCompatActivity {
                                 String cont = object.getString("continue");
                                 Log.i("Continue", cont);
                                 if (cont.equals("false") && acu_list.size()!=0) {
-                                    /*Toast.makeText(getApplicationContext(), acu_list.get(0), Toast.LENGTH_SHORT).show();
-                                    GlobalVariable gv = GlobalVariable.getInstance();
-                                    gv.setAcupoint((String[]) acu_list.toArray(new String[acu_list.size()]));
-                                    Intent intent = new Intent();
-                                    intent.setClass(DiagnosisActivity.this, CameraActivity.class);
-                                    startActivity(intent);*/
-
                                     btn_stop_diagnosis.setVisibility(View.INVISIBLE);
                                     btn_show_acupoint.setVisibility(View.VISIBLE);
                                 }else{
