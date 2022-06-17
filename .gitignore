@@ -1,6 +1,4 @@
 local.properties
 .gradle/
 .idea/
-facemesh/build/
-facedetection/build/
-hands/build/
+app/build/
